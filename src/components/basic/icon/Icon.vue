@@ -1,18 +1,40 @@
 <template>
-  <div style="border: 1px solid red">
-    ssss
-  </div>
+  <span class="c-icon-wrapper">
+    <svg class="c-icon" aria-hidden="true">
+      <use v-bind:xlink:href="`#icon-${name}`"></use>
+    </svg>
+  </span>
 </template>
 
 <script>
+import './svg'
 export default {
-  name: 'cIcon'
+  name: 'cIcon',
+  props: {
+    name: {
+      type: String
+    }
+  }
 }
 </script>
 
 <style lang="scss" scoped>
-  div {
-    width: 400px;
-    height: 200px;
+  .c-icon-wrapper {
+    width: 1em;
+    height: 1em;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    .c-icon {
+      fill: black;
+      width: 100%;
+      height: 100%;
+      vertical-align: top;
+      overflow: hidden;
+
+      &:hover {
+        fill: #3399ff;
+      }
+    }
   }
 </style>
