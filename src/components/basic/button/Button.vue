@@ -3,7 +3,7 @@
     class="c-button"
     :class="{[`icon-${position}`]:true, wave, ...buttonType}" @click="onClick">
     <c-icon v-if="icon" :name="icon" class="c-icon"></c-icon>
-    <c-icon name="loading" v-show="loading&&selfLoading" class="x-icon loading"> </c-icon>
+    <c-icon name="loading" v-show="loading&&selfLoading" class="c-icon loading"> </c-icon>
     <span class="slot-content">
       <slot></slot>
     </span>
@@ -67,7 +67,16 @@ export default {
         this.slefLoading = !this.slefLoading
       }
       this.wave = true
+    },
+    listenAnimation () {
+      this.wave = false
     }
+  },
+  mounted () {
+    this.$el.addEventListener('animationend', this.listenAnimation)
+  },
+  beforeDestroy () {
+    this.$el.removeEventListener('animationend', this.listenAnimation)
   }
 }
 </script>
@@ -114,6 +123,7 @@ export default {
     }
   }
   &.icon-left {
+    // margin-top: 10px;
     > .c-icon {
       order: 1;
       margin-right: 0.1em;
@@ -206,6 +216,9 @@ export default {
       flex-shrink: 0;
     }
   }
+}
+.icon-left {
+  // margin-top: 10px;
 }
 
 @keyframes after-scale {

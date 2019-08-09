@@ -7,12 +7,16 @@
     <c-icon name="close" class="c-icon-style"></c-icon>
     <!-- <c-icon name="loading" class="c-icon-style"></c-icon> -->
     <hr/>
-    <c-button icon="github" position="left">github</c-button>
-    <c-button icon="success" position="right">success</c-button>
-    <c-button type="primary">primary</c-button>
-    <c-button type="info">info</c-button>
-    <c-button type="warning">warning</c-button>
-    <c-button type="error">error</c-button>
+    <div class="btn-warpper">
+      <c-button icon="setting" position="left" class="setting-btn">setting</c-button>
+      <!-- <c-button icon="close" position="right">github</c-button> -->
+      <c-button icon="success" position="right">success</c-button>
+      <c-button type="primary">primary</c-button>
+      <c-button type="info">info</c-button>
+      <c-button type="warning">warning</c-button>
+      <c-button type="error">error</c-button>
+    </div>
+    <hr/>
   </div>
 </template>
 
@@ -46,5 +50,16 @@ export default {
         fill: pink;
       }
     }
+    .btn-warpper {
+      // height: 100px;
+      padding: 30px 0;
+
+      .setting-btn {
+        // margin-top: 10px;
+        position: relative;
+        top: 2.5px;
+      }
+    }
+
   }
 </style>
