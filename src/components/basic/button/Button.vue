@@ -167,7 +167,7 @@ export default {
       border-color: #57c5f7;
     }
   }
-  &.sucess {
+  &.success {
     background: $success;
     color: #fff;
     border-color: $success;

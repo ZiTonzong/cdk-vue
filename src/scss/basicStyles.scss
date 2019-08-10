@@ -1,0 +1,14 @@
+@import '@/scss/baseColor.scss';
+
+.success {
+  color: $success;
+}
+.error {
+  color: $error;
+}
+.info {
+  color:$link;
+}
+.warning {
+  color: $warning;
+}
