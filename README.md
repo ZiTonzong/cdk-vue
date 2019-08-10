@@ -1,5 +1,5 @@
 # cdk-vue
-A component library based vue.js by CDK
+个人模仿Element UI和Xue-UI实现的一套基于vue.js的UI组件库
 
 > A Vue.js project
 
