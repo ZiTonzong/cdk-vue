@@ -2,13 +2,29 @@
 
 .success {
   color: $success;
+
+  /deep/ .c-icon {
+    fill: $success;
+  }
 }
 .error {
   color: $error;
+
+  /deep/ .c-icon {
+    fill: $error;
+  }
 }
 .info {
   color:$link;
+
+  /deep/ .c-icon {
+    fill: $link;
+  }
 }
 .warning {
   color: $warning;
+
+  /deep/ .c-icon {
+    fill: $warning;
+  }
 }

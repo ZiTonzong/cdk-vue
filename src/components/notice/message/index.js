@@ -2,6 +2,12 @@ import Vue from 'vue'
 import messageComponent from '@/components/notice/message/Message.vue'
 import confirmComponent from '@/components/notice/message/Confirm.vue'
 
+const MessageDiv = document.createElement('div')
+MessageDiv.className = 'message'
+// let t = document.createTextNode('CLICK ME')
+// MessageDiv.appendChild(t)
+document.body.appendChild(MessageDiv)
+
 const Message = {
   install (Vue, options) {
     Vue.prototype.$message = function ({
@@ -11,8 +17,8 @@ const Message = {
       showClose
     }) {
       const MessageContructor = Vue.extend(messageComponent)
-      const div = document.createElement('div')
-      document.body.appendChild(div)
+      const Div = document.createElement('div')
+      MessageDiv.appendChild(Div)
       const vm = new MessageContructor({
         propsData: {
           options: {
@@ -22,7 +28,7 @@ const Message = {
             showClose
           }
         }
-      }).$mount(div)
+      }).$mount(Div)
       vm.visible = true
     }
 
@@ -32,7 +38,7 @@ const Message = {
       document.body.appendChild(div)
       const vm = new ConfirmConstructor({
         propsData: options
-      }).$mounnt(div)
+      }).$mount(div)
       vm.visible = true
       return vm.confirm()
     }
@@ -40,8 +46,8 @@ const Message = {
 
   message ({ message, duration = 2000, showClose = false }) {
     const MessageContructor = Vue.extend(messageComponent)
-    const div = document.createElement('div')
-    document.body.appendChild(div)
+    const Div = document.createElement('div')
+    MessageDiv.appendChild(Div)
     const vm = new MessageContructor({
       propsData: {
         options: {
@@ -51,17 +57,17 @@ const Message = {
           showClose
         }
       }
-    }).$mount(div)
+    }).$mount(Div)
     vm.visible = true
   },
 
   confirm (options) {
     const ConfirmConstructor = Vue.extend(confirmComponent)
-    const div = document.createElement('div')
-    document.body.appendChild(div)
+    const Div = document.createElement('div')
+    document.body.appendChild(Div)
     const vm = new ConfirmConstructor({
       propsData: options
-    }).$mount(div)
+    }).$mount(Div)
     vm.visible = true
     return vm.confirm()
   }

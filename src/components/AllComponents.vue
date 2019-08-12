@@ -18,10 +18,14 @@
     </div>
     <hr/>
     <div class="message-wrapper">
-      <c-button type="info" @click="showInfoMessage">提示按钮</c-button>
-      <c-button type="success" @click="showSuccessMessage">成功按钮</c-button>
-      <c-button type="warning" @click="showWarningMessage">警告按钮</c-button>
-      <c-button type="error" @click="showErrorMessage">错误按钮</c-button>
+      <c-button type="info" @click="showInfoMessage">提示信息</c-button>
+      <c-button type="success" @click="showSuccessMessage">成功信息</c-button>
+      <c-button type="warning" @click="showWarningMessage">警告信息</c-button>
+      <c-button type="error" @click="showErrorMessage">错误信息</c-button>
+    </div>
+    <hr/>
+    <div class="confirm-wrapper">
+      <c-button type="error" @click="showConfirm">点击打开Confirm弹窗</c-button>
     </div>
   </div>
 </template>
@@ -42,16 +46,35 @@ export default {
   },
   methods: {
     showInfoMessage () {
-      this.$message({message: '这是一条提示消息'})
+      this.$message({message: '这是一条提示消息', showClose: true})
     },
     showSuccessMessage () {
-      this.$message({type: 'success', message: '这是一条成功消息'})
+      this.$message({type: 'success', message: '这是一条成功消息', showClose: true})
     },
     showWarningMessage () {
       this.$message({type: 'warning', message: '这是一条警告消息'})
     },
     showErrorMessage () {
       this.$message({type: 'error', message: '这是一条错误消息'})
+    },
+    showConfirm () {
+      this.$confirm({
+        title: '请确认操作',
+        confirmText: '确定删除',
+        cancelText: '取消删除',
+        message: '永久删除该文件，是否继续？'
+      }).then(() => {
+        this.$message({
+          type: 'success',
+          message: '删除成功',
+          duration: 1500
+        })
+      }).catch(() => {
+        this.$message({
+          message: '已取消删除',
+          duration: 1500
+        })
+      })
     }
   }
 }

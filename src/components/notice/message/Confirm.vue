@@ -90,7 +90,7 @@ export default {
   background: rgba(0, 0, 0, 0.2);
   > .confirm-info {
     position: fixed;
-    top: 50%;
+    top: 45%;
     left: 50%;
     transform: translateX(-50%) translateY(-50%);
     width: 400px;
@@ -105,7 +105,7 @@ export default {
     justify-content: space-evenly;
     > .info-title {
       font-size: 16px;
-      font-weight: 600px;
+      font-weight: 600;
       color:$title;
     }
     > .info-message {
@@ -123,7 +123,8 @@ export default {
       }
     }
     > .button-wrapper {
-      text-align: end;
+      margin-top: 20px;
+      text-align: right;
     }
   }
 }
