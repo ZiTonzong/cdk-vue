@@ -27,12 +27,44 @@
     <div class="confirm-wrapper">
       <c-button type="error" @click="showConfirm">点击打开Confirm弹窗</c-button>
     </div>
+    <hr/>
+    <div class="popover-div">
+      <c-popover position="top" trigger="click">
+        <template slot="content">这是一段内容,这是一段内容,这是一段内容,这是一段内容。</template>
+        <c-button>click top 激活</c-button>
+      </c-popover>
+      <c-popover position="left" trigger="click">
+        <template slot="content">这是一段内容,这是一段内容,这是一段内容,这是一段内容。</template>
+        <c-button>click left 激活</c-button>
+      </c-popover>
+      <c-popover position="bottom" trigger="click">
+        <template slot="content">这是一段内容,这是一段内容,这是一段内容,这是一段内容。</template>
+        <c-button>click bottom 激活</c-button>
+      </c-popover>
+      <c-popover position="right" trigger="hover">
+        <template slot="content">这是一段内容,这是一段内容,这是一段内容,这是一段内容。</template>
+        <c-button>hover 激活</c-button>
+      </c-popover>
+    </div>
+    <hr/>
+    <div class="button-group-div" style="margin-left: 20px;">
+      <c-button-group>
+        <c-button>选项一</c-button>
+        <c-button>选项二</c-button>
+        <c-button>选项三</c-button>
+        <c-button>选项四</c-button>
+        <c-button>选项五</c-button>
+      </c-button-group>
+    </div>
   </div>
 </template>
 
 <script>
 import cIcon from '@/components/basic/icon/Icon.vue'
 import cButton from '@/components/basic/button/Button.vue'
+import cButtonGroup from '@/components/basic/buttongroup/ButtonGroup.vue'
+import cPopover from '@/components/notice/popover/Popover.vue'
+
 export default {
   name: 'AllComponents',
   // data () {
@@ -42,7 +74,9 @@ export default {
   // },
   components: {
     cIcon,
-    cButton
+    cButton,
+    cPopover,
+    cButtonGroup
   },
   methods: {
     showInfoMessage () {
