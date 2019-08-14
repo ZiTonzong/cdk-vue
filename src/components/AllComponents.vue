@@ -56,6 +56,25 @@
         <c-button>选项五</c-button>
       </c-button-group>
     </div>
+    <hr/>
+    <div class="input-div">
+      <c-input placeholder="请输入内容" :value="input" @input="onInput"></c-input>
+      <c-input icon="user" placeholder="请输入内容" v-model="input"></c-input>
+      <!-- <input v-model="input"> -->
+      <!-- {{input}} -->
+      <c-input disabled></c-input>
+      <c-input error></c-input>
+      <c-input type="textarea"></c-input>
+    </div>
+    <hr/>
+    <div class="switch-div">
+      <div>
+        <c-switch v-model="switch1"></c-switch>
+      </div>
+      <div><c-switch v-model="switch2" disabled></c-switch></div>
+      <div><c-switch v-model="switch3" true-color="orange" false-color="gray"></c-switch></div>
+      <div><c-switch v-model="switch4" true-text="开" false-text="关"></c-switch></div>
+    </div>
   </div>
 </template>
 
@@ -64,19 +83,27 @@ import cIcon from '@/components/basic/icon/Icon.vue'
 import cButton from '@/components/basic/button/Button.vue'
 import cButtonGroup from '@/components/basic/buttongroup/ButtonGroup.vue'
 import cPopover from '@/components/notice/popover/Popover.vue'
+import cInput from '@/components/form/input/Input.vue'
+import cSwitch from '@/components/form/switch/Switch.vue'
 
 export default {
   name: 'AllComponents',
-  // data () {
-  //   return {
-
-  //   }
-  // },
   components: {
     cIcon,
     cButton,
     cPopover,
-    cButtonGroup
+    cButtonGroup,
+    cInput,
+    cSwitch
+  },
+  data () {
+    return {
+      input: '',
+      switch1: false,
+      switch2: false,
+      switch3: false,
+      switch4: false
+    }
   },
   methods: {
     showInfoMessage () {
@@ -109,6 +136,10 @@ export default {
           duration: 1500
         })
       })
+    },
+    onInput () {
+      this.input = arguments[0]
+      // console.log(arguments[0])
     }
   }
 }
@@ -117,7 +148,7 @@ export default {
 <style lang="scss" scoped>
   .container {
     width: 500px;
-    height: 500px;
+    // height: 500px;
     margin: 0 auto;
 
     .c-icon-style {
@@ -137,6 +168,20 @@ export default {
         top: 2.5px;
       }
     }
-
+    .input-div {
+      .c-input {
+        margin-bottom: 10px;
+        width: 250px;
+      }
+      .c-textarea-wrapper {
+        width: 300px;
+      }
+    }
+    .switch-div {
+      > div {
+        margin-left: 20px;
+        margin-top: 10px;
+      }
+    }
   }
 </style>
