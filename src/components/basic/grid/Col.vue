@@ -70,6 +70,7 @@ export default {
 
 <style scoped lang="scss">
 .c-col {
+  box-sizing: border-box;
   $class-prefix: mobile-col-;
   @for $n from 1 through 24 {
     &.#{$class-prefix}#{$n} {
