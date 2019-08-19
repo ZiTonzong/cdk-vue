@@ -6,7 +6,7 @@
   >
     <div class="c-sider" v-show="visible">
       <slot></slot>
-      <c-icon name="close" class="c-icon" @click="visible=false" v-if="closeButton"></c-icon>
+      <c-icon name="close" class="c-icon" @click.native="visible=false" v-if="closeButton"></c-icon>
     </div>
   </c-spread>
 </template>
@@ -21,15 +21,15 @@ export default {
     closeButton: {
       type: Boolean,
       default: false
-    },
-    components: {
-      cIcon,
-      cSpread
-    },
-    data () {
-      return {
-        visible: true
-      }
+    }
+  },
+  components: {
+    cIcon,
+    cSpread
+  },
+  data () {
+    return {
+      visible: true
     }
   }
 }

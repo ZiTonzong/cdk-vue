@@ -115,7 +115,7 @@
       </div>
     </div>
     <div class="container-3" style="border: 1px solid red">
-      <c-container>
+      <!-- <c-container>
         <c-header>
           <h1>这里是header</h1>
         </c-header>
@@ -125,6 +125,32 @@
         <c-footer>
           <h1>这里是footer</h1>
         </c-footer>
+      </c-container> -->
+      <c-container>
+        <c-header>
+          <h1>这里是header</h1>
+        </c-header>
+        <c-container>
+          <c-sider>
+            <h3>这里是sider</h3>
+          </c-sider>
+          <c-main>
+            <h1>这里是main</h1>
+          </c-main>
+        </c-container>
+        <c-footer>
+          <h1>这里是footer</h1>
+        </c-footer>
+      </c-container>
+    </div>
+    <div class="container-4" style="border: 1px solid red">
+      <c-container>
+        <c-sider close-button><h3>这里是sider</h3></c-sider>
+        <c-container>
+          <c-header><h1>这里是header</h1></c-header>
+          <c-main><h1>这里是main</h1></c-main>
+          <c-footer><h1>这里是footer</h1></c-footer>
+        </c-container>
       </c-container>
     </div>
   </div>
@@ -225,7 +251,7 @@ export default {
 
 <style lang="scss" scoped>
 @import '@/scss/baseColor.scss';
-  div > .container-3 {
+  div > .container-3, .container-4 {
     margin: 0 auto;
   }
   .outer-container {
@@ -300,14 +326,41 @@ export default {
     width: 800px;
     height: 600px;
     text-align: center;
+    // overflow: hidden;
 
     .c-header, .c-footer {
       background: #B3C0D1;
+    }
+    .c-spread {
+      background: gray;
     }
     .c-main {
       // margin: 0 auto;
       line-height: 401px;
       background: #E9EEF3;
+    }
+  }
+  .container-4 {
+    margin-top: 70px;
+    width: 800px;
+    height: 600px;
+    text-align: center;
+
+    .c-spread {
+      background: gray;
+      width: 100px;
+    }
+    .c-container {
+      flex: 1;
+
+      .c-header, .c-footer {
+        background: #B3C0D1;
+      }
+      .c-main {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
     }
   }
 </style>
