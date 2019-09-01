@@ -153,8 +153,31 @@
         </c-container>
       </c-container>
     </div>
+    <div class="container-5">
+      <c-collapse selected.sync="activeNames">
+        <c-collapse-item name="sports" >
+          <template slot="title">体育</template>
+          新闻新闻
+        </c-collapse-item>
+        <c-collapse-item name="sports" >
+          <template slot="title">娱乐</template>
+          新闻新闻
+        </c-collapse-item>
+        <c-collapse-item name="sports" >
+          <template slot="title">军事</template>
+          新闻新闻
+        </c-collapse-item>
+        <c-collapse-item name="sports" >
+          <template slot="title">民生</template>
+          新闻新闻
+        </c-collapse-item>
+        <c-collapse-item name="sports" >
+          <template slot="title">社会</template>
+          新闻新闻
+        </c-collapse-item>
+      </c-collapse>
+    </div>
   </div>
-
 </template>
 
 <script>
@@ -173,6 +196,8 @@ import cHeader from '@/components/basic/container/Header.vue'
 import cFooter from '@/components/basic/container/Footer.vue'
 import cMain from '@/components/basic/container/Main.vue'
 import cSider from '@/components/basic/container/Sider.vue'
+import cCollapse from '@/components/others/collapse/Collapse.vue'
+import cCollapseItem from '@/components/others/collapse/CollapseItem.vue'
 
 export default {
   name: 'AllComponents',
@@ -191,7 +216,9 @@ export default {
     cHeader,
     cFooter,
     cMain,
-    cSider
+    cSider,
+    cCollapse,
+    cCollapseItem
   },
   data () {
     return {
@@ -206,7 +233,8 @@ export default {
         {label: '台湾', value: 'Taiwan'}
       ],
       visible1: true,
-      visible2: true
+      visible2: true,
+      activeNames: []
     }
   },
   methods: {
@@ -251,7 +279,7 @@ export default {
 
 <style lang="scss" scoped>
 @import '@/scss/baseColor.scss';
-  div > .container-3, .container-4 {
+  div > .container-3, .container-4, .container-5 {
     margin: 0 auto;
   }
   .outer-container {
@@ -362,5 +390,11 @@ export default {
         align-items: center;
       }
     }
+  }
+  .container-5 {
+    margin-top: 70px;
+    width: 800px;
+    height: 600px;
+    text-align: center;
   }
 </style>
