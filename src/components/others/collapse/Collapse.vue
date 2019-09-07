@@ -9,7 +9,8 @@ export default {
   name: 'cCollapse',
   props: {
     selected: {
-      type: Array
+      type: Array,
+      default: function () { return [] }
     },
     accordion: {
       type: Boolean,

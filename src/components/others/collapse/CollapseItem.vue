@@ -1,8 +1,8 @@
 <template>
   <div class="c-collapse-item">
-    <div class="title" @click="onClick" :class="{selected: selected.indexOf(name)>=0}">
-      <c-icon name="right" class="c-icon"></c-icon>
+    <div class="title" @click="onClickItem" :class="{selected: selected.indexOf(name)>=0}">
       <slot name="title"></slot>
+      <c-icon name="arrow" class="c-icon"></c-icon>
     </div>
     <c-spread :visible="selected.indexOf(name)>=0">
       <div class="collapse-content">
@@ -34,7 +34,8 @@ export default {
     }
   },
   methods: {
-    onClick () {
+    onClickItem () {
+      // console.log('sssssssss')
       this.$parent.$emit('click-title', this.name)
     }
   }
@@ -62,18 +63,18 @@ export default {
     border: $borderbase;
     border-bottom: none;
     margin: -1px -1px 0;
-    padding: 4px 0 4px 8px;
+    padding: 4px 18px 4px 24px;
     background: $bg;
     color: $title;
     font-size: 14px;
     display: flex;
-    justify-content: flex-start;
+    justify-content: space-between;
     align-items: center;
     user-select: none;
     > .c-icon {
-      margin-right: 15px;
-      width: 10px;
-      height: 10px;
+      // margin-right: 15px;
+      width: 8px;
+      height: 8px;
       transition: transform 0.3s;
     }
     &.selected {
@@ -86,6 +87,7 @@ export default {
     font-size: 14px;
     padding: 4px 0 4px 8px;
     text-indent: 2em;
+    text-align: left;
     color: $main;
   }
 }

@@ -2,11 +2,11 @@
   <div>
     <div class="outer-container">
       <div class="container-1" style="border: 1px solid red">
-        <!-- <c-icon name="github" class="c-icon-style"></c-icon>
+        <c-icon name="github"></c-icon>
         <c-icon name="user" class="c-icon-style"></c-icon>
         <c-icon name="arrow" class="c-icon-style"></c-icon>
         <c-icon name="setting" class="c-icon-style"></c-icon>
-        <c-icon name="close" class="c-icon-style"></c-icon> -->
+        <c-icon name="close" class="c-icon-style"></c-icon>
         <!-- <c-icon name="loading" class="c-icon-style"></c-icon> -->
         <hr/>
         <div class="btn-warpper">
@@ -154,26 +154,26 @@
       </c-container>
     </div>
     <div class="container-5">
-      <c-collapse selected.sync="activeNames">
+      <c-collapse :selected.sync="activeNames" :accordion="true">
         <c-collapse-item name="sports" >
           <template slot="title">体育</template>
-          新闻新闻
+          据俄罗斯卫星通讯社报道称，日前埃尔多安在土耳其中部城市锡瓦斯表示道，拥核国家禁止土耳其拥有自己的核武器是不可接受的。其称，有些国家拥有带核弹头的导弹，还不止一枚两枚，但这些国家却告诉土耳其不能拥有核武器，这令土方无法接受。accordionaccordion
         </c-collapse-item>
-        <c-collapse-item name="sports" >
+        <c-collapse-item name="entertainment" >
           <template slot="title">娱乐</template>
-          新闻新闻
+          据俄罗斯卫星通讯社报道称，日前埃尔多安在土耳其中部城市锡瓦斯表示道，拥核国家禁止土耳其拥有自己的核武器是不可接受的。其称，有些国家拥有带核弹头的导弹，还不止一枚两枚，但这些国家却告诉土耳其不能拥有核武器，这令土方无法接受。
         </c-collapse-item>
-        <c-collapse-item name="sports" >
+        <c-collapse-item name="military" >
           <template slot="title">军事</template>
-          新闻新闻
+          据俄罗斯卫星通讯社报道称，日前埃尔多安在土耳其中部城市锡瓦斯表示道，拥核国家禁止土耳其拥有自己的核武器是不可接受的。其称，有些国家拥有带核弹头的导弹，还不止一枚两枚，但这些国家却告诉土耳其不能拥有核武器，这令土方无法接受。
         </c-collapse-item>
-        <c-collapse-item name="sports" >
+        <c-collapse-item name="people's livelihood" >
           <template slot="title">民生</template>
-          新闻新闻
+          据俄罗斯卫星通讯社报道称，日前埃尔多安在土耳其中部城市锡瓦斯表示道，拥核国家禁止土耳其拥有自己的核武器是不可接受的。其称，有些国家拥有带核弹头的导弹，还不止一枚两枚，但这些国家却告诉土耳其不能拥有核武器，这令土方无法接受。
         </c-collapse-item>
-        <c-collapse-item name="sports" >
+        <c-collapse-item name="social" >
           <template slot="title">社会</template>
-          新闻新闻
+          据俄罗斯卫星通讯社报道称，日前埃尔多安在土耳其中部城市锡瓦斯表示道，拥核国家禁止土耳其拥有自己的核武器是不可接受的。其称，有些国家拥有带核弹头的导弹，还不止一枚两枚，但这些国家却告诉土耳其不能拥有核武器，这令土方无法接受。
         </c-collapse-item>
       </c-collapse>
     </div>

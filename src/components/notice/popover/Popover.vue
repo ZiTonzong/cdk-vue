@@ -129,6 +129,8 @@ export default {
   position: absolute;
   z-index: 25;
   cursor: default;
+  // transform-origin: center bottom;
+
   &::before, &::after {
     content: '';
     display: block;
