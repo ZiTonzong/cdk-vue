@@ -177,6 +177,33 @@
         </c-collapse-item>
       </c-collapse>
     </div>
+    <div class="container-5">
+      <c-tabs :selected.sync="selectTab">
+        <template slot="title">
+          <c-tabs-title name="shaolin">少林</c-tabs-title>
+          <c-tabs-title name="wudang">武当</c-tabs-title>
+          <c-tabs-title name="xiaoyao">逍遥</c-tabs-title>
+          <c-tabs-title name="tianlongjiao" disabled>天龙教</c-tabs-title>
+          <c-tabs-title name="mingjiao">明教</c-tabs-title>
+        </template>
+          <c-tabs-pane name="shaolin">
+            <p>少林寺号称“天下第一名刹”，一直引领武林正道。少林寺下设罗汉堂、达摩堂、般若院皆有一位首座高僧，加上十八铜人，少林可谓高手云集。据传其藏经阁中不仅有闻名天下的少林七十二绝技，更有在这之上的易筋、洗髓二经，得之任一便可独步武林。</p>
+          </c-tabs-pane>
+          <c-tabs-pane name="wudang">
+            <p>百年前，张三丰张真人创立了武当派。武当武学讲究以静制动，以柔克刚，以短胜长，以慢击快。武当作为武林大派，尽管外表光鲜，实则门派内部已经矛盾重重。掌门卓人清似乎为弟子中下一任的掌门人选伤透了脑筋。</p>
+          </c-tabs-pane>
+          <c-tabs-pane name="xiaoyao">
+            <p>逍遥派是武林中最神秘的门派，择徒要求甚严，往往整个门派只有寥寥数人，但凡其门下弟子个个皆是人中龙凤。逍遥派不仅在武学一途上甚是了得，医卜星相，琴棋书画，机械杂工，贸迁种植，斗酒唱曲，行令猜谜，逍遥弟子无所不通，无所不精，更有杰出者能兼奇门遁甲之术。</p>
+          </c-tabs-pane>
+          <c-tabs-pane name="tianlongjiao">
+            <p>天龙教崛起自西域，两位教主天王，龙王皆是天下一等一的高手。天龙教以“止戈为武”作为自身的理念，扶危济困，其教众迅速增长，声势日隆，令中原武林无不侧目。</p>
+          </c-tabs-pane>
+          <c-tabs-pane name="mingjiao">
+            <p>明教正式名称为摩尼教，又作牟尼教，发源于古代波斯萨珊王朝，为公元3世纪中叶波斯人摩尼（Mānī）所创立，受基督教与伊朗祆教马兹达教义所影响，是一种带有诺斯底主义色彩的二元论宗教。主要教义为"二宗三际论"，崇尚光明。</p>
+            <p>摩尼教约于六至七世纪传入我国新疆地区，复由新疆传入漠北之回纥，而盛行于该地。唐代宗大历三年（768），应回纥之请，于江淮等地建立摩尼寺。唐武宗会昌五年（845）灭佛时，摩尼教亦遭严重打击，转而成为秘密宗教，并吸收道教及民间信仰，从而改称明教。明教因相信黑暗就要过去，光明即将来临，故敢于造反，屡有反政府之举。自北宋末年起，浙江、江西、安徽等地，皆曾发生明教造反之事。其后明教又与弥勒教、白莲社相结合，而演变成明代末年之白莲教。明教一词至清代虽已不复见于文献，但“明王”出世之说，犹流传于民间。</p>
+          </c-tabs-pane>
+      </c-tabs>
+    </div>
   </div>
 </template>
 
@@ -198,6 +225,9 @@ import cMain from '@/components/basic/container/Main.vue'
 import cSider from '@/components/basic/container/Sider.vue'
 import cCollapse from '@/components/others/collapse/Collapse.vue'
 import cCollapseItem from '@/components/others/collapse/CollapseItem.vue'
+import cTabs from '@/components/navigation/tabs/Tabs.vue'
+import cTabsTitle from '@/components/navigation/tabs/TabsTitle.vue'
+import cTabsPane from '@/components/navigation/tabs/TabsPane.vue'
 
 export default {
   name: 'AllComponents',
@@ -218,7 +248,10 @@ export default {
     cMain,
     cSider,
     cCollapse,
-    cCollapseItem
+    cCollapseItem,
+    cTabs,
+    cTabsTitle,
+    cTabsPane
   },
   data () {
     return {
@@ -234,7 +267,8 @@ export default {
       ],
       visible1: true,
       visible2: true,
-      activeNames: []
+      activeNames: [],
+      selectTab: 'shaolin'
     }
   },
   methods: {
@@ -394,7 +428,7 @@ export default {
   .container-5 {
     margin-top: 70px;
     width: 800px;
-    height: 600px;
+    height: 200px;
     text-align: center;
   }
 </style>
