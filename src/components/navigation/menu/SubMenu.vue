@@ -21,7 +21,7 @@ export default {
 		cSpread,
 		cIcon
 	},
-	inject: ['eventBus'],,
+	inject: ['eventBus'],
 	props: {
 		index: {
 			type: String,
@@ -109,3 +109,109 @@ export default {
 	}
 }
 </script>
+<style lang="scss" scoped>
+	@import '@/scss/baseColor.scss';
+	.c-sub-menu {
+		color: $main;
+		font-size: 14px;
+		position: relative;
+		width: 100%;
+
+		> .title {
+			padding: 5px 15px;
+			position: relative;
+			width: 100%;
+			min-width: 8em;
+			white-space: nowrap;
+			display: flex;
+			justify-content: flex-start;
+			align-items: center;
+
+			&:hover {
+				background: $habg;
+			}
+			> .c-icon {
+				margin-left: auto;
+				transition: transform 0.3s;
+				color: $sub;
+			}
+		}
+		> .popover {
+			width: 100%;
+			position: absolute;
+			margin-top: 2px;
+			top: 100%;
+			left: 0;
+			background: #fff;
+			border-radius: 2px;
+			box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+		}
+		&.open {
+			> .title {
+				> .c-icon {
+					transform: rotateZ(90deg);
+				}
+			}
+		}
+	}
+	.c-sub-menu.vertical {
+		color: $main;
+		font-size: 14px;
+		
+		> .title {
+			padding: 5px 15px;
+			position: relative;
+			width: 100%;
+			min-width: 8em;
+			white-space: nowrap;
+			display: flex;
+			justify-content: flex-start;
+			align-items: center;
+
+			&:hover {
+				background: $habg;
+			}
+			> .c-icon {
+				margin-left: auto;
+				transition: transform 0.3s;
+			}
+		}
+		> .popover {
+			position: static;
+			box-shadow: none;
+		}
+		&.open {
+			> .title {
+				> .c-icon {
+					transform: rotate(90deg);
+				}
+			}
+		}
+	}
+	.c-sub-menu .c-sub-menu {
+		&:first-child {
+			.title {
+				border-top-left-radius: 2px;
+				border-top-right-radius: 2px;
+			}
+		}
+		&:last-child {
+			.title {
+				border-bottom-left-radius: 2px;
+				border-bottom-right-radius: 2px;
+			}
+		}
+  }
+	.c-sub-menu.vertical .c-sub-menu.vertical .title {
+		padding-left: 25px;
+	}
+	.c-sub-menu .c-sub-menu .popover {
+		top: 0;
+		left:100%;
+		margin-top: 0;
+		margin-left: 2px;
+	}
+	.c-sub-menu.vertical .c-sub-menu.vertical .popover {
+		margin-left: 0;
+	}
+</style>
