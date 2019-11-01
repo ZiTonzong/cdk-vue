@@ -2,7 +2,7 @@
   <div class="c-sub-menu" :class="{open:selfOpen, vertical}">
 		<div class="title" @click="onClick">
 			<slot name="title"></slot>
-			<c-icon name="right" class="c-icon"></c-icon>
+			<c-icon name="arrow" class="c-icon-style"></c-icon>
 		</div>
 		<div class="popover">
 			<c-spread :visible="selfOpen">
@@ -11,6 +11,7 @@
 		</div>
 	</div>
 </template>
+
 <script>
 import cIcon from '@/components/basic/icon/Icon.vue'
 import cSpread from '@/components/others/spread/Spread.vue'
@@ -52,10 +53,10 @@ export default {
 		this.selfOpen = this.open
 	},
 	mounted () {
-		this.$eventBus.$on('click-item', this.listenItem)
-		this.$eventBus.$on('click-sub', this.listenSub)
-		this.$eventBus.$on('vertical-prop', this.listenVertical)
-		this.$eventBus.$on('update-menu', this.listenRefresh)
+		this.eventBus.$on('click-item', this.listenItem)
+		this.eventBus.$on('click-sub', this.listenSub)
+		this.eventBus.$on('vertical-prop', this.listenVertical)
+		this.eventBus.$on('update-menu', this.listenRefresh)
 	},
 	beforeDestroy () {
 		this.eventBus.$off('click-item', this.listenItem)
@@ -66,7 +67,7 @@ export default {
 	methods: {
 		onClick () {
 			this.selfOpen = !this.selfOpen
-			this.$eventBus.$emit('click-sub', this.index)
+			this.eventBus.$emit('click-sub', this.index)
 		},
 		listenItem (data) {
 			if (this.open) {
@@ -78,7 +79,7 @@ export default {
 				this.listenRefresh(data)
 			}
 		},
-		listenSub(index) {
+		listenSub (index) {
 			if (this.open) {
 				return
 			}
@@ -87,7 +88,9 @@ export default {
 			}
 			let arr = index.split('-')
 			this.indexArr.forEach((str, n) => {
-				str !== arr[n] ? this.selfOpen = false : ''
+				if (str !== arr[n]) {
+					this.selfOpen = false
+				}
 			})
 		},
 		listenVertical (value) {
@@ -101,7 +104,9 @@ export default {
 				let arr = data.index.split('-')
 				let result = true
 				this.indexArr.forEach((str, n) => {
-					str !== arr[n] ? result = false : ''
+					if (str !== arr[n]) {
+						result = false
+					}
 				})
 				this.selfOpen = result
 			}
@@ -111,6 +116,13 @@ export default {
 </script>
 <style lang="scss" scoped>
 	@import '@/scss/baseColor.scss';
+	*,
+	*::before,
+	*::after {
+		margin: 0;
+		padding: 0;
+		box-sizing: border-box;
+	}
 	.c-sub-menu {
 		color: $main;
 		font-size: 14px;
@@ -130,10 +142,16 @@ export default {
 			&:hover {
 				background: $habg;
 			}
-			> .c-icon {
+			> .c-icon-style {
 				margin-left: auto;
 				transition: transform 0.3s;
-				color: $sub;
+				// color: $sub;
+				transform:rotateZ(90deg);
+				font-size: 5px;
+
+				/deep/ .c-icon {
+					fill: #909399;
+				}
 			}
 		}
 		> .popover {
@@ -145,11 +163,12 @@ export default {
 			background: #fff;
 			border-radius: 2px;
 			box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+			z-index: 10;
 		}
 		&.open {
 			> .title {
-				> .c-icon {
-					transform: rotateZ(90deg);
+				> .c-icon-style {
+					transform: rotateZ(270deg);
 				}
 			}
 		}
@@ -157,7 +176,6 @@ export default {
 	.c-sub-menu.vertical {
 		color: $main;
 		font-size: 14px;
-		
 		> .title {
 			padding: 5px 15px;
 			position: relative;
@@ -171,7 +189,7 @@ export default {
 			&:hover {
 				background: $habg;
 			}
-			> .c-icon {
+			> .c-icon-style {
 				margin-left: auto;
 				transition: transform 0.3s;
 			}
@@ -182,7 +200,7 @@ export default {
 		}
 		&.open {
 			> .title {
-				> .c-icon {
+				> .c-icon-style {
 					transform: rotate(90deg);
 				}
 			}

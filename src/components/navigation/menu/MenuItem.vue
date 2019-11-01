@@ -3,6 +3,7 @@
 		<slot></slot>
 	</div>
 </template>
+
 <script>
 export default {
 	name: 'cMenuItem',
@@ -44,9 +45,12 @@ export default {
 	methods: {
 		getNames (vm) {
 			this.pathArr = this.pathArr || []
-			vm.$options.name === 'xMenuItem' || vm.$options.name === 'xSubMenu' ? this.pathArr.unshift(vm.name) : ''
+			if (vm.$options.name === 'cMenuItem' || vm.$options.name === 'cSubMenu') {
+				this.pathArr.unshift(vm.name)
+			}
 			if (vm.$parent) {
-				this.getNames.call(this, vm.$parent)
+				let that = this
+				that.getNames.call(this, vm.$parent)
 			}
 		},
 		onClickItem () {
@@ -68,7 +72,7 @@ export default {
 			if (data.index) {
 				this.active = this.index === data.index
 			} else if (data.path === this.path) {
-				this.$eventBus.$emit('update-menu', { index: this.index })
+				this.eventBus.$emit('update-menu', { index: this.index })
 			}
 		}
 	}
@@ -77,6 +81,13 @@ export default {
 
 <style lang="scss" scoped>
 	@import '@/scss/baseColor.scss';
+	*,
+	*::before,
+	*::after {
+		margin: 0;
+		padding: 0;
+		box-sizing: border-box;
+	}
 	.c-menu-item {
 		width: 100%;
 		padding: 5px 15px;

@@ -3,6 +3,7 @@
 		<slot></slot>
 	</div>
 </template>
+
 <script>
 import Vue from 'vue'
 export default {
@@ -32,7 +33,7 @@ export default {
 		this.eventBus.$on('click-item', this.listenItem)
 		this.$nextTick(() => {
 			this.eventBus.$emit('vertical-prop', this.vertical)
-			if (this.selectIndex) {
+			if (this.selectedIndex) {
 				this.currentIndex = this.selectedIndex
 				this.updateMenu({ inedx: this.selectedIndex })
 			}
@@ -56,6 +57,13 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+  *,
+	*::before,
+	*::after {
+		margin: 0;
+		padding: 0;
+		box-sizing: border-box;
+	}
 	@import '@/scss/baseColor.scss';
 	.c-menu {
 		width: 100%;

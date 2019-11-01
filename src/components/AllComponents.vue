@@ -204,6 +204,23 @@
           </c-tabs-pane>
       </c-tabs>
     </div>
+    <div class="container-6">
+      <c-menu :selected-index.sync="selected1" vertical>
+        <c-menu-item name="home" index="1">首页</c-menu-item>
+        <c-sub-menu name="about" index="2" >
+          <template slot="title">关于</template>
+          <c-menu-item name="culture" index="2-1">企业文化</c-menu-item>
+          <c-menu-item name="developers" index="2-2">开发团队</c-menu-item>
+          <c-menu-item name="contacts" index="2-3">联系方式</c-menu-item>
+        </c-sub-menu>
+        <c-sub-menu name="hire" index="3">
+          <template slot="title">招聘</template>
+          <c-menu-item name="font" index="3-1">前端开发</c-menu-item>
+          <c-menu-item name="back" index="3-2">后端维护</c-menu-item>
+          <c-menu-item name="sale" index="3-3">销售团队</c-menu-item>
+        </c-sub-menu>
+      </c-menu>
+    </div>
   </div>
 </template>
 
@@ -268,7 +285,8 @@ export default {
       visible1: true,
       visible2: true,
       activeNames: [],
-      selectTab: 'shaolin'
+      selectTab: 'shaolin',
+      selected1: ''
     }
   },
   methods: {
@@ -430,5 +448,11 @@ export default {
     width: 800px;
     height: 200px;
     text-align: center;
+  }
+  .container-6 {
+    margin: 70px auto 0;
+    // margin-top: 70px;
+    width: 800px;
+    height: 400px;
   }
 </style>
