@@ -41,6 +41,7 @@ export default {
 		return {
 			selfOpen: false,
 			vertical: false,
+			accordion: false,
 			clickable: true
 		}
 	},
@@ -56,12 +57,14 @@ export default {
 		this.eventBus.$on('click-item', this.listenItem)
 		this.eventBus.$on('click-sub', this.listenSub)
 		this.eventBus.$on('vertical-prop', this.listenVertical)
+		this.eventBus.$on('accordion-prop', this.listenAccordion)
 		this.eventBus.$on('update-menu', this.listenRefresh)
 	},
 	beforeDestroy () {
 		this.eventBus.$off('click-item', this.listenItem)
 		this.eventBus.$off('click-sub', this.listenSub)
 		this.eventBus.$off('vertical-prop', this.listenVertical)
+		this.eventBus.$off('accordion-prop', this.listenAccordion)
 		this.eventBus.$off('update-menu', this.listenRefresh)
 	},
 	methods: {
@@ -89,12 +92,17 @@ export default {
 			let arr = index.split('-')
 			this.indexArr.forEach((str, n) => {
 				if (str !== arr[n]) {
-					this.selfOpen = false
+					if (this.accordion) {
+						this.selfOpen = false
+					}
 				}
 			})
 		},
 		listenVertical (value) {
 			this.vertical = value
+		},
+		listenAccordion (value) {
+			this.accordion = value
 		},
 		listenRefresh (data) {
 			if (this.open) {
@@ -192,6 +200,12 @@ export default {
 			> .c-icon-style {
 				margin-left: auto;
 				transition: transform 0.3s;
+				transform:rotateZ(90deg);
+				font-size: 5px;
+
+				/deep/ .c-icon {
+					fill: #909399;
+				}
 			}
 		}
 		> .popover {
@@ -201,7 +215,7 @@ export default {
 		&.open {
 			> .title {
 				> .c-icon-style {
-					transform: rotate(90deg);
+					transform: rotate(270deg);
 				}
 			}
 		}

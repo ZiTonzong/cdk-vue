@@ -114,7 +114,7 @@
         </div>
       </div>
     </div>
-    <div class="container-3" style="border: 1px solid red">
+    <div class="container-3" style="border: 0px solid red">
       <!-- <c-container>
         <c-header>
           <h1>这里是header</h1>
@@ -143,7 +143,7 @@
         </c-footer>
       </c-container>
     </div>
-    <div class="container-4" style="border: 1px solid red">
+    <div class="container-4" style="border: 0px solid red">
       <c-container>
         <c-sider close-button><h3>这里是sider</h3></c-sider>
         <c-container>
@@ -205,8 +205,8 @@
       </c-tabs>
     </div>
     <div class="container-6">
-      <c-menu :selected-index.sync="selected1" vertical>
-        <c-menu-item name="home" index="1">首页</c-menu-item>
+      <c-menu :selected-index="selected1" @update:selected-index="val => selected1 = val" :router="true" vertical accordion>
+        <c-menu-item name="welcome" index="1">首页</c-menu-item>
         <c-sub-menu name="about" index="2" >
           <template slot="title">关于</template>
           <c-menu-item name="culture" index="2-1">企业文化</c-menu-item>
@@ -215,7 +215,7 @@
         </c-sub-menu>
         <c-sub-menu name="hire" index="3">
           <template slot="title">招聘</template>
-          <c-menu-item name="font" index="3-1">前端开发</c-menu-item>
+          <c-menu-item name="front" index="3-1">前端开发</c-menu-item>
           <c-menu-item name="back" index="3-2">后端维护</c-menu-item>
           <c-menu-item name="sale" index="3-3">销售团队</c-menu-item>
         </c-sub-menu>
@@ -286,7 +286,7 @@ export default {
       visible2: true,
       activeNames: [],
       selectTab: 'shaolin',
-      selected1: ''
+      selected1: '2-1'
     }
   },
   methods: {
@@ -333,11 +333,7 @@ export default {
 @import '@/scss/baseColor.scss';
   div > .container-3, .container-4, .container-5 {
     margin: 0 auto;
-  }
-  .outer-container {
-    display: flex;
-    margin: 0 auto;
-    width: 1350px;
+    padding: 65px 0 0 250px;
   }
   .container-1 {
     width: 500px;
@@ -406,6 +402,8 @@ export default {
     width: 800px;
     height: 600px;
     text-align: center;
+    // padding: 65px 0 0 250px;
+    margin-right: 250px;
     // overflow: hidden;
 
     .c-header, .c-footer {

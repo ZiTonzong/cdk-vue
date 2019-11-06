@@ -13,6 +13,13 @@ export default {
 		vertical: {
 			type: Boolean,
 			default: false
+		},
+		accordion: {
+			type: Boolean,
+			default: false
+		},
+		router: {
+			type: Boolean
 		}
 	},
 	data () {
@@ -33,6 +40,7 @@ export default {
 		this.eventBus.$on('click-item', this.listenItem)
 		this.$nextTick(() => {
 			this.eventBus.$emit('vertical-prop', this.vertical)
+			this.eventBus.$emit('accordion-prop', this.accordion)
 			if (this.selectedIndex) {
 				this.currentIndex = this.selectedIndex
 				this.updateMenu({ inedx: this.selectedIndex })
@@ -41,13 +49,20 @@ export default {
 	},
 	methods: {
 		listenItem (data) {
-			this.currentIndex = data.inedx
+			console.log('data::', data)
+			this.currentIndex = data.index
 			this.$emit('index-change', this.currentIndex)
-			this.$emit('update:selectedIndex', this.currentIndex)
+			this.$emit('update:selected-index', this.currentIndex)
 			this.currentName = data.name
 			this.$emit('name-change', this.currentName)
 			this.currentPath = data.path
 			this.$emit('path-change', this.currentPath)
+			if (this.router) {
+				console.log('this.route', this.$route)
+				this.$router.push({
+					path: data.path
+				})
+			}
 		},
 		updateMenu (data) {
 			this.eventBus.$emit('update-menu', data)

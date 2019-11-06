@@ -29,19 +29,6 @@ export default {
 			return this.pathArr && this.pathArr.join('/')
 		}
 	},
-	beforeDestroy () {
-		this.$eventBus.$off('click-item', this.listenItem)
-		this.$eventBus.$off('vertical-prop', this.listenVertical)
-		this.$eventBus.$off('update-menu', this.listenRefresh)
-	},
-	mounted () {
-		this.eventBus.$on('click-item', this.listenItem)
-		this.eventBus.$on('vertical-prop', this.listenVertical)
-		this.eventBus.$on('update-menu', this.listenRefresh)
-		this.$nextTick(() => {
-			this.getNames(this)
-		})
-	},
 	methods: {
 		getNames (vm) {
 			this.pathArr = this.pathArr || []
@@ -75,6 +62,19 @@ export default {
 				this.eventBus.$emit('update-menu', { index: this.index })
 			}
 		}
+	},
+	beforeDestroy () {
+		this.eventBus.$off('click-item', this.listenItem)
+		this.eventBus.$off('vertical-prop', this.listenVertical)
+		this.eventBus.$off('update-menu', this.listenRefresh)
+	},
+	mounted () {
+		this.eventBus.$on('click-item', this.listenItem)
+		this.eventBus.$on('vertical-prop', this.listenVertical)
+		this.eventBus.$on('update-menu', this.listenRefresh)
+		this.$nextTick(() => {
+			this.getNames(this)
+		})
 	}
 }
 </script>
