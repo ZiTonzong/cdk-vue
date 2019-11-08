@@ -88,6 +88,7 @@ export default {
   top: 0;
   left: 0;
   background: rgba(0, 0, 0, 0.2);
+
   > .confirm-info {
     position: fixed;
     top: 45%;
@@ -103,6 +104,7 @@ export default {
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
+
     > .info-title {
       font-size: 16px;
       font-weight: 600;

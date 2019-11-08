@@ -100,10 +100,12 @@ export default {
   margin-bottom: 10px;
   border-radius: 4px;
   box-shadow: $shadow;
+
   > .c-icon {
     margin-right: 0.4em;
     width: 25px;
     height: 25px;
+
     &.close {
       cursor: pointer;
       margin-left: 3em;

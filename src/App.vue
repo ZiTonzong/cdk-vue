@@ -17,9 +17,9 @@
     <div class="navbar">
       <c-menu :selected-index="selectedIndex" @update:selected-index="val => selected1 = val" :router="true" vertical>
         <c-menu-item name="welcome" index="1">首页</c-menu-item>
-        <c-sub-menu name="about" index="2" >
-          <template slot="title">关于</template>
-          <c-menu-item name="culture" index="2-1">企业文化</c-menu-item>
+        <c-sub-menu name="views" index="2" >
+          <template slot="title">视图</template>
+          <c-menu-item name="slides" index="2-1">走马灯</c-menu-item>
           <c-menu-item name="developers" index="2-2">开发团队</c-menu-item>
           <c-menu-item name="contacts" index="2-3">联系方式</c-menu-item>
         </c-sub-menu>
