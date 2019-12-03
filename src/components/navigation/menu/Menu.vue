@@ -59,8 +59,10 @@ export default {
 			this.$emit('path-change', this.currentPath)
 			if (this.router) {
 				console.log('this.route', this.$route)
+				console.log('this.$router', this.$router)
 				this.$router.push({
-					path: data.path
+					name: data.name,
+					path: '/' + data.path
 				})
 			}
 		},

@@ -3,13 +3,13 @@
 		<div class="c-view" ref="view" :class="{transition}">
 			<slot></slot>
 		</div>
-		<c-icon name="left" class="icon prev" @click="changeCurrent(-1)"></c-icon>
-		<c-icon name="right" class="icon next" @click="changeCurrent(1)"></c-icon>
+		<c-icon name="arrow" class="icon prev" @click="changeCurrent(-1)"></c-icon>
+		<c-icon name="arrow" class="icon next" @click="changeCurrent(1)"></c-icon>
 	</div>
 </template>
 
 <script>
-import cIcon from '@/components/basic/icon/icon.vue'
+import cIcon from '@/components/basic/icon/Icon.vue'
 export default {
 	name: 'cSlides',
 	components: {
@@ -38,7 +38,7 @@ export default {
 		cloneDom () {
 			let nodes = this.$slots.default.filter(node => node.elm.nodeType !== 3)
 			nodes.forEach(node => {
-				node.ele.style['flex-shrink'] = 0
+				node.elm.style['flex-shrink'] = 0
 			})
 			this.length = nodes.length
 			const first = nodes[0].elm.cloneNode(true)
@@ -62,6 +62,7 @@ export default {
 				this.changeCurrent(1)
 				this.timerId = setTimeout(play, this.duration)
 			}
+			this.timerId = setTimeout(play, this.duration)
 		},
 		changeCurrent (n) {
 			if (this.changing) {
@@ -69,6 +70,8 @@ export default {
 			}
 			this.current += n
 			if (this.current > this.length) {
+				this.current = 1
+			} else if (this.current < 1) {
 				this.current = this.length
 			}
 		},
@@ -80,7 +83,7 @@ export default {
 			this.timerId && this.stopPlay()
 		},
 		leave () {
-			this.autoPlay() && !this.timerId && this.startAutoPlay()
+			this.autoPlay && !this.timerId && this.startAutoPlay()
 		}
 	},
 	watch: {
@@ -90,28 +93,30 @@ export default {
 			}
 			let view = this.$refs.view
 			if (nVal === 1 && oVal === this.length) {
-				view.style.transform = `tranlateX(${-100 * (this.length + 1)})`
+				view.style.transform = `translateX(${-100 * (this.length + 1)})`
 				view.addEventListener('transitionend', this.reset)
 				this.changing = true
 				return
 			}
-			if (nVal === this.length && oldVal === 1) {
+			if (nVal === this.length && oVal === 1) {
 				view.style.transform = `translate(0)`
-				view.addEventListener('transitioned', this.reset)
+				view.addEventListener('transitionend', this.reset)
 				this.changing = true
 				return
 			}
-			view.style.transform = `translateX(${-100 * newVal}%)`
+			view.style.transform = `translateX(${-100 * nVal}%)`
 		}
 	},
 	mounted () {
 		this.$nextTick(() => {
 			this.cloneDom()
-			this.autoPlay && this.startAutoPlay()
+			if (this.autoPlay) {
+				this.startAutoPlay()
+			}
 		})
 	},
 	beforeDestroy () {
-		this.changing = false,
+		this.changing = false
 		this.$refs.view.removeEventListener('transitionend', this.reset)
 	}
 }
