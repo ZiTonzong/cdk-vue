@@ -7,6 +7,7 @@ import Message from './components/notice/message'
 import Menu from './components/navigation/menu/index.js'
 import Slides from './components/views/slides'
 import Pager from './components/navigation/pager'
+import Sticky from './components/navigation/sticky'
 
 Vue.config.productionTip = false
 
@@ -14,6 +15,7 @@ Vue.use(Message)
 Vue.use(Menu)
 Vue.use(Slides)
 Vue.use(Pager)
+Vue.use(Sticky)
 
 /* eslint-disable no-new */
 new Vue({

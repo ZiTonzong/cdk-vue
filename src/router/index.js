@@ -7,6 +7,7 @@ import Page404 from '@/pages/Page404.vue'
 import Page500 from '@/pages/Page500.vue'
 import SlidesDemo from '@/pages/viewsDemo/SlidesDemo.vue'
 import PagerDemo from '@/pages/viewsDemo/PagerDemo.vue'
+import StickyDemo from '@/pages/viewsDemo/StickyDemo.vue'
 
 Vue.use(Router)
 
@@ -52,6 +53,11 @@ export default new Router({
           path: '/pager',
           name: 'pager',
           component: PagerDemo
+        },
+        {
+          path: '/sticky',
+          name: 'sticky',
+          component: StickyDemo
         }
       ]
     },

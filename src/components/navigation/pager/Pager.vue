@@ -140,7 +140,7 @@ export default {
 		}
 		&.disabled {
 			color: $disabled;
-			cursor: default;
+			cursor: not-allowed;
 
 			&:hover {
 				color: $disabled;
@@ -161,7 +161,7 @@ export default {
 			}
 			&.disabled {
 				color: $disabled;
-				cursor: default;
+				cursor: not-allowed;
 
 				&:hover {
 					color: $disabled;

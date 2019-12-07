@@ -26,6 +26,7 @@
         <c-sub-menu name="nav" index="3">
           <template slot="title">导航</template>
           <c-menu-item name="pager" index="3-1">pager分页</c-menu-item>
+          <c-menu-item name="sticky" index="3-2">sticky粘滞</c-menu-item>
         </c-sub-menu>
         <c-sub-menu name="hire" index="4">
           <template slot="title">招聘</template>
