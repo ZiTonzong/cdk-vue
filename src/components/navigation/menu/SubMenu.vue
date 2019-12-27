@@ -155,7 +155,7 @@ export default {
 				transition: transform 0.3s;
 				// color: $sub;
 				transform:rotateZ(90deg);
-				font-size: 5px;
+				font-size: 8px;
 
 				/deep/ .c-icon {
 					fill: #909399;
@@ -201,7 +201,7 @@ export default {
 				margin-left: auto;
 				transition: transform 0.3s;
 				transform:rotateZ(90deg);
-				font-size: 5px;
+				font-size: 8px;
 
 				/deep/ .c-icon {
 					fill: #909399;

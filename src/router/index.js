@@ -8,6 +8,7 @@ import Page500 from '@/pages/Page500.vue'
 import SlidesDemo from '@/pages/viewsDemo/SlidesDemo.vue'
 import PagerDemo from '@/pages/viewsDemo/PagerDemo.vue'
 import StickyDemo from '@/pages/viewsDemo/StickyDemo.vue'
+import WaterfallDemo from '@/pages/viewsDemo/WaterfallDemo.vue'
 
 Vue.use(Router)
 
@@ -58,6 +59,11 @@ export default new Router({
           path: '/sticky',
           name: 'sticky',
           component: StickyDemo
+        },
+        {
+          path: '/waterfall',
+          name: 'waterfall',
+          component: WaterfallDemo
         }
       ]
     },

@@ -79,7 +79,7 @@ export default {
 				})
 				this.$refs.item.forEach(item => {
 					item.style.width = this.width + 'px'
-					let minH = Math.min.apply(undefined, this.heightArray)
+					let minH = Math.min.apply(Math, this.heightArray)
 					let index = this.heightArray.indexOf(minH)
 					let { height } = item.getBoundingClientRect()
 					item.style.top = minH + 'px'
@@ -111,6 +111,7 @@ export default {
 }
 </script>
 <style lang="scss" scoped>
+	@import '@/scss/baseColor.scss';
 	.c-waterfall {
 		width: 100%;
 		margin: 0 auto;
@@ -124,6 +125,7 @@ export default {
 			flex-shrink: 0;
 		}
 		> .item {
+			// background: $p;
 			width: 200px;
 			position: absolute;
 		}

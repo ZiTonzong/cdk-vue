@@ -4,7 +4,10 @@
 		<p>用于窗口滚动时固定某元素的组件</p>
 		<h3>基础用法</h3>
 		<div class="demo">
-			<c-sticky :distance="60">
+			<c-sticky :distance="60" class="my-sticky">
+                <div>sticky</div>
+            </c-sticky>
+			<c-sticky :distance="60" class="my-sticky long-sticky">
                 <div>sticky</div>
             </c-sticky>
 		</div>
@@ -33,6 +36,14 @@ export default {
 		// 	height: 200px;
 		// 	background: $p5;
 		// }
+		.my-sticky {
+			margin-top: 50px;
+			height: 100px;
+		}
+		.long-sticky {
+			margin-top: 500px;
+			height: 500px;
+		}
 	}
 }
 </style>

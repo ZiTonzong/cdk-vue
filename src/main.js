@@ -8,6 +8,7 @@ import Menu from './components/navigation/menu/index.js'
 import Slides from './components/views/slides'
 import Pager from './components/navigation/pager'
 import Sticky from './components/navigation/sticky'
+import Waterfall from './components/others/waterfall'
 
 Vue.config.productionTip = false
 
@@ -16,6 +17,7 @@ Vue.use(Menu)
 Vue.use(Slides)
 Vue.use(Pager)
 Vue.use(Sticky)
+Vue.use(Waterfall)
 
 /* eslint-disable no-new */
 new Vue({

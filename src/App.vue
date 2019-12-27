@@ -28,11 +28,11 @@
           <c-menu-item name="pager" index="3-1">pager分页</c-menu-item>
           <c-menu-item name="sticky" index="3-2">sticky粘滞</c-menu-item>
         </c-sub-menu>
-        <c-sub-menu name="hire" index="4">
-          <template slot="title">招聘</template>
-          <c-menu-item name="front" index="4-1">前端开发</c-menu-item>
-          <c-menu-item name="back" index="4-2">后端维护</c-menu-item>
-          <c-menu-item name="sale" index="4-3">销售团队</c-menu-item>
+        <c-sub-menu name="others" index="4">
+          <template slot="title">其他</template>
+          <c-menu-item name="collapse" index="4-1">折叠面板</c-menu-item>
+          <c-menu-item name="back" index="4-2">内置过渡动画</c-menu-item>
+          <c-menu-item name="waterfall" index="4-3">waterfall瀑布流</c-menu-item>
         </c-sub-menu>
       </c-menu>
     </div>
