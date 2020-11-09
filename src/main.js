@@ -18,7 +18,7 @@ Vue.use(Slides)
 Vue.use(Pager)
 Vue.use(Sticky)
 Vue.use(Waterfall)
-
+console.log('sssssssssss', router)
 /* eslint-disable no-new */
 new Vue({
   el: '#app',

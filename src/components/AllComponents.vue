@@ -245,6 +245,7 @@ import cCollapseItem from '@/components/others/collapse/CollapseItem.vue'
 import cTabs from '@/components/navigation/tabs/Tabs.vue'
 import cTabsTitle from '@/components/navigation/tabs/TabsTitle.vue'
 import cTabsPane from '@/components/navigation/tabs/TabsPane.vue'
+// import router from '@/router'
 
 export default {
   name: 'AllComponents',
@@ -325,6 +326,12 @@ export default {
       this.input = arguments[0]
       // console.log(arguments[0])
     }
+  },
+  mounted () {
+    console.log('this.$router', this.$router)
+    // setTimeout(() => {
+    //   router.push({name: 'waterfall'})
+    // }, 5000)
   }
 }
 </script>
