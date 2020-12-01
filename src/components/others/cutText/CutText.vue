@@ -64,7 +64,7 @@ export default {
     // 手动触发组件初始化，用以重新计算文本内容实际高度和截取后的高度
     displayFlagObj: {
       type: [Object, Array],
-      default() {
+      default () {
         return {}
       }
     }
@@ -105,7 +105,7 @@ export default {
   },
   watch: {
     displayFlagObj: {
-      handler() {
+      handler () {
         this.initCutText()
       },
       deep: true
