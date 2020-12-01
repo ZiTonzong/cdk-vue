@@ -35,7 +35,6 @@ export default {
   },
   methods: {
     onClickItem () {
-      // console.log('sssssssss')
       this.$parent.$emit('click-title', this.name)
     }
   }

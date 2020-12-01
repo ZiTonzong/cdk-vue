@@ -1,7 +1,7 @@
 <template>
   <transition name="fade-confirm">
-    <div class="c-confirm" v-show="visible">
-      <div class="confirm-info">
+    <div class="c-confirm" v-show="visible" @click="destroyEle">
+      <div class="confirm-info" @click.stop>
         <div class="info-title">{{title}}</div>
         <div class="info-message">
           <c-icon name="warning" class="c-icon"></c-icon>
@@ -67,7 +67,7 @@ export default {
       })
     },
     destroyEle () {
-      this.$el.removeEventListener('transitioncancel', this.destoryEle)
+      this.$el.removeEventListener('transitioncancel', this.destroyEle)
       this.$destroy()
     }
   },

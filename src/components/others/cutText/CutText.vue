@@ -1,11 +1,19 @@
 <template>
   <div ref="cutText">
-    <p class="content">
-      {{content}}
-    </p>
-    <div class="btn-more" v-if="isShowMoreBtn && !isHiddenMoreBtn && initShowMoreBtn" @click="handleMoreText">{{moreBtnText}}</div>
-    <div class="btn-more" v-if="isShowHiddenBtn && isHiddenMoreBtn" @click="handleHiddenText">{{hiddenBtnText}}</div>
-    <slot name="more-btn"></slot>
+    <div class="content" >
+      <template v-if="!$slots['content']">
+        {{content}}
+      </template>
+      <slot name="content"></slot>
+    </div>
+    <div class="btn-more" v-if="isShowMoreBtn && !isHiddenMoreBtn && initShowMoreBtn && !$slots['more-btn']" @click="handleMoreText">{{moreBtnText}}</div>
+    <div class="btn-more" v-if="isShowHiddenBtn && isHiddenMoreBtn && !$slots['hidden-btn']" @click="handleHiddenText">{{hiddenBtnText}}</div>
+    <div class="more-btn-slot-wrapper pointer" @click="handleMoreText">
+      <slot name="more-btn"></slot>
+    </div>
+    <div class="hidden-btn-slot-wrapper pointer" @click="handleHiddenText">
+      <slot name="hidden-btn"></slot>
+    </div>
   </div>
 </template>
 
@@ -52,6 +60,13 @@ export default {
     hiddenBtnText: {
       type: String,
       default: '收起'
+    },
+    // 手动触发组件初始化，用以重新计算文本内容实际高度和截取后的高度
+    displayFlagObj: {
+      type: [Object, Array],
+      default() {
+        return {}
+      }
     }
   },
   data () {
@@ -67,13 +82,14 @@ export default {
       // const clientHeight = cutTextDom.firstChild.clientHeight
       cutTextDom.style.width = this.contentWidth
       cutTextDom.firstChild.style.lineHeight = this.lineHeight + 'px'
-      const divWidth = this.lineHeight * this.line
+      const divHeight = this.lineHeight * this.line
       // console.log('scrollHeight', scrollHeight)
       // console.log('clientHeight', clientHeight)
-      // console.log('divWidth', divWidth)
-      if (scrollHeight > divWidth) {
+      // console.log('divHeight', divHeight)
+      if (scrollHeight > divHeight) {
         this.initShowMoreBtn = true
-        cutTextDom.firstChild.style.height = divWidth + 'px'
+        this.isHiddenMoreBtn = false
+        cutTextDom.firstChild.style.height = divHeight + 'px'
       }
     },
     handleMoreText () {
@@ -87,8 +103,17 @@ export default {
       // const cutTextDom = this.$refs.cutText
     }
   },
+  watch: {
+    displayFlagObj: {
+      handler() {
+        this.initCutText()
+      },
+      deep: true
+    }
+  },
   mounted () {
     this.initCutText()
+    // console.log('this', this.$slots, this.$slots['more-btn'])
     // const cutTextDom = this.$refs.cutText
     // console.log('cutTextDom.firstChild.style.height', cutTextDom.firstChild.scrollHeight)
     // console.log('cutTextDom.firstChild.style', cutTextDom.firstChild.clientHeight)
@@ -103,6 +128,6 @@ export default {
 }
 .btn-more {
   cursor: pointer;
-  color: red;
+  color: #00503C;
 }
 </style>
