@@ -1,5 +1,5 @@
 <template>
-  <span class="c-icon-wrapper">
+  <span class="c-icon-wrapper" @click="bindClick">
     <svg class="c-icon" aria-hidden="true">
       <use v-bind:xlink:href="`#icon-${name}`"></use>
     </svg>
@@ -13,6 +13,11 @@ export default {
   props: {
     name: {
       type: String
+    }
+  },
+  methods: {
+    bindClick(e) {
+      this.$emit('click', e)
     }
   }
 }

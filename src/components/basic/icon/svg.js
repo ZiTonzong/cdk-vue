@@ -5,10 +5,11 @@
     <symbol id="icon-next" viewBox="0 0 1024 1024">
     <path d="M778.541176 490.706824L352.557176 64.752941a30.117647 30.117647 0 0 0-42.586352 42.586353L714.631529 512 310.061176 916.570353a30.087529 30.087529 0 0 0-0.060235 42.646588 29.967059 29.967059 0 0 0 42.646588-0.030117l425.833412-425.86353a30.087529 30.087529 0 0 0 0.030118-42.61647z" fill="#000000" p-id="3213"></path>
     </symbol>
+    <symbol id="icon-next-double" viewBox="0 0 1024 1024">
+    <path d="M493.504 150.4L448 195.648l318.592 316.8L448 829.248l45.504 45.248L857.6 512.448 493.504 150.4z m-256 0L192 195.648l318.592 316.8L192 829.248l45.504 45.248L601.6 512.448 237.504 150.4z" fill="#000000" p-id="4083"></path>
+    </symbol>
     </svg>`,
-    l = (c = document.getElementsByTagName("script"))[
-      c.length - 1
-    ].getAttribute("data-injectcss");
+    l = (c = document.getElementsByTagName('script'))[c.length - 1].getAttribute('data-injectcss')
   if (l && !a.__iconfont__svg__cssinject__) {
     a.__iconfont__svg__cssinject__ = !0
     try {

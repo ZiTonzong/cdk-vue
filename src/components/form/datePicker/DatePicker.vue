@@ -14,8 +14,19 @@
         </label>
         <div class="action-bar">
           <div class="icons">
-            <c-icon name="next-double" style="transform:rotateZ(180deg);" class="icon" @click="handleDoubleNext(-1)"></c-icon>
-            <c-icon name="next" style="transform:rotateZ(180deg);" class="icon" @click="changeMonth(-1)" v-show="dateListVisible"></c-icon>
+            <c-icon
+              name="next-double"
+              style="transform:rotateZ(180deg);"
+              class="icon icon-next-double"
+              @click.native="handleDoubleNext(-1)"
+            ></c-icon>
+            <c-icon
+              name="next"
+              style="transform:rotateZ(180deg);"
+              class="icon"
+              @click.native="changeMonth(-1)"
+              v-show="dateListVisible"
+            ></c-icon>
           </div>
           <div class="time">
             <span class="year" @click="showList('yearListVisible')" v-show="dateListVisible || monthListVisible">{{ year }}年</span>
@@ -28,8 +39,8 @@
             </span>
           </div>
           <div class="icons">
-            <c-icon name="next" class="icon" @click="changeMonth(1)" v-show="dateListVisible"></c-icon>
-            <c-icon name="next-double" class="icon" @click="handleDoubleNext(1)"></c-icon>
+            <c-icon name="next" class="icon" @click.native="changeMonth(1)" v-show="dateListVisible"></c-icon>
+            <c-icon name="next-double" class="icon" @click.native="handleDoubleNext(1)"></c-icon>
           </div>
         </div>
         <div class="picker-body" v-show="dateListVisible">
@@ -111,7 +122,7 @@
             </span>
           </div>
         </div>
-        <div class="century-list" v-if="centuryListVisible">
+        <div class="century-list" v-show="centuryListVisible">
           <div class="row">
             <span
               v-for="(n, index) in centuryArray.slice(0, 3)"
@@ -290,8 +301,9 @@ export default {
       }
     },
     listenDocument(e) {
-      console.log('this.$refs.picker', this.$refs.picker, e)
+      // console.log('this.$refs.picker', this.$refs.picker, e)
       if (!this.$refs.picker.contains(e.target) && !this.$refs.input.contains(e.target)) {
+        console.log('e.target', e.target, this.$refs.picker.contains(e.target))
         // 点击别处关闭且无 value，将数据初始化
         if (!this.value) {
           this.yearAreaBase = 0
@@ -418,9 +430,11 @@ $p: #409eff;
 * {
   box-sizing: border-box;
 }
+
 .c-date-picker {
   width: 280px;
   position: relative;
+
   > .input-wrapper {
     width: 200px;
     position: relative;
