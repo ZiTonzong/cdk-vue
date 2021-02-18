@@ -221,6 +221,9 @@
         </c-sub-menu>
       </c-menu>
     </div>
+    <div class="container-6">
+      <c-date-picker v-model="date" :default-value="today"></c-date-picker>
+    </div>
   </div>
 </template>
 
@@ -245,6 +248,7 @@ import cCollapseItem from '@/components/others/collapse/CollapseItem.vue'
 import cTabs from '@/components/navigation/tabs/Tabs.vue'
 import cTabsTitle from '@/components/navigation/tabs/TabsTitle.vue'
 import cTabsPane from '@/components/navigation/tabs/TabsPane.vue'
+import cDatePicker from '@/components/form/datePicker/DatePicker.vue'
 // import router from '@/router'
 
 export default {
@@ -269,7 +273,8 @@ export default {
     cCollapseItem,
     cTabs,
     cTabsTitle,
-    cTabsPane
+    cTabsPane,
+    cDatePicker
   },
   data () {
     return {
@@ -287,7 +292,9 @@ export default {
       visible2: true,
       activeNames: [],
       selectTab: 'shaolin',
-      selected1: '2-1'
+      selected1: '2-1',
+      date: '',
+      today: '2020-12-11'
     }
   },
   methods: {

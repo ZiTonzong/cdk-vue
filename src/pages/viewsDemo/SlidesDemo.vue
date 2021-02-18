@@ -4,11 +4,11 @@
 		<p>在有限空间内，循环播放同一类型的图片、文字等内容</p>
 		<h3>基础用法</h3>
 		<div class="demo">
-			<c-slides class="slides-cls" :duration="2000">
-				<div>1</div>
-				<div>2</div>
-				<div>3</div>
-				<div>4</div>
+			<c-slides class="slides-cls" :duration="2000" :autoPlay="false">
+				<div class="img">1</div>
+				<div class="img">2</div>
+				<div class="img">3</div>
+				<div class="img">4</div>
 			</c-slides>
 		</div>
 	</div>
@@ -35,6 +35,12 @@ export default {
 		.slides-cls {
 			height: 200px;
 			background: $p5;
+
+			.img {
+				width: 100px;
+				height: 50px;
+				background: red;
+			}
 		}
 	}
 }

@@ -3,8 +3,8 @@
 		<div class="c-view" ref="view" :class="{transition}">
 			<slot></slot>
 		</div>
-		<c-icon name="arrow" class="icon prev" @click="changeCurrent(-1)"></c-icon>
-		<c-icon name="arrow" class="icon next" @click="changeCurrent(1)"></c-icon>
+		<c-icon name="arrow" class="icon prev" @click.native="changeCurrent(-1)"></c-icon>
+		<c-icon name="arrow" class="icon next" @click.native="changeCurrent(1)"></c-icon>
 	</div>
 </template>
 
@@ -32,58 +32,6 @@ export default {
 			length: 0,
 			timerId: null,
 			changing: false
-		}
-	},
-	methods: {
-		cloneDom () {
-			let nodes = this.$slots.default.filter(node => node.elm.nodeType !== 3)
-			nodes.forEach(node => {
-				node.elm.style['flex-shrink'] = 0
-			})
-			this.length = nodes.length
-			const first = nodes[0].elm.cloneNode(true)
-			const last = nodes[nodes.length - 1].elm.cloneNode(true)
-			this.$refs.view.prepend(last)
-			this.$refs.view.append(first)
-		},
-		reset () {
-			let view = this.$refs.view
-			this.transition = false
-			if (this.current === 1) {
-				view.style.transform = `translateX(-100%)`
-			} else {
-				view.style.transform = `translateX(${-100 * this.length}%)`
-			}
-			this.changing = false
-			view.removeEventListener('transitionend', this.reset)
-		},
-		startAutoPlay () {
-			let play = () => {
-				this.changeCurrent(1)
-				this.timerId = setTimeout(play, this.duration)
-			}
-			this.timerId = setTimeout(play, this.duration)
-		},
-		changeCurrent (n) {
-			if (this.changing) {
-				return
-			}
-			this.current += n
-			if (this.current > this.length) {
-				this.current = 1
-			} else if (this.current < 1) {
-				this.current = this.length
-			}
-		},
-		stopPlay () {
-			window.clearTimeout(this.timerId)
-			this.timerId = null
-		},
-		enter () {
-			this.timerId && this.stopPlay()
-		},
-		leave () {
-			this.autoPlay && !this.timerId && this.startAutoPlay()
 		}
 	},
 	watch: {
@@ -118,6 +66,59 @@ export default {
 	beforeDestroy () {
 		this.changing = false
 		this.$refs.view.removeEventListener('transitionend', this.reset)
+	},
+	methods: {
+		cloneDom () {
+			let nodes = this.$slots.default.filter(node => node.elm.nodeType !== 3)
+			nodes.forEach(node => {
+				node.elm.style['flex-shrink'] = 0
+			})
+			this.length = nodes.length
+			const first = nodes[0].elm.cloneNode(true)
+			const last = nodes[nodes.length - 1].elm.cloneNode(true)
+			this.$refs.view.prepend(last)
+			this.$refs.view.append(first)
+		},
+		reset () {
+			let view = this.$refs.view
+			this.transition = false
+			if (this.current === 1) {
+				view.style.transform = `translateX(-100%)`
+			} else {
+				view.style.transform = `translateX(${-100 * this.length}%)`
+			}
+			this.changing = false
+			view.removeEventListener('transitionend', this.reset)
+		},
+		startAutoPlay () {
+			let play = () => {
+				this.changeCurrent(1)
+				this.timerId = setTimeout(play, this.duration)
+			}
+			this.timerId = setTimeout(play, this.duration)
+		},
+		changeCurrent (n) {
+			console.log('n', n)
+			if (this.changing) {
+				return
+			}
+			this.current += n
+			if (this.current > this.length) {
+				this.current = 1
+			} else if (this.current < 1) {
+				this.current = this.length
+			}
+		},
+		stopPlay () {
+			window.clearTimeout(this.timerId)
+			this.timerId = null
+		},
+		enter () {
+			this.timerId && this.stopPlay()
+		},
+		leave () {
+			this.autoPlay && !this.timerId && this.startAutoPlay()
+		}
 	}
 }
 </script>
@@ -139,7 +140,7 @@ export default {
 			&.prev {
 				left: 0;
 				top: 50%;
-				transform: translateY(-50%);
+				transform: translateY(-50%) rotateZ(180deg);
 			}
 			&.next {
 				right: 0;
