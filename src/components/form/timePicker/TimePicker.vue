@@ -19,20 +19,20 @@
               </li>
             </ul>
           </div>
-        </div>
-        <div class="item" ref="minute">
-          <ul class="minute">
-            <li v-for="(n, index) in 60" :key="n" @click="handleClick(index, 'minute')" :class="{ selected: minute === index }">
-              {{ index > 9 ? index : '0' + index }}
-            </li>
-          </ul>
-        </div>
-        <div class="item" ref="second">
-          <ul class="second">
-            <li v-for="(n, index) in 60" :key="n" @click="handleClick(index, 'second')" :class="{ selected: second === index }">
-              {{ index > 9 ? index : '0' + index }}
-            </li>
-          </ul>
+          <div class="item" ref="minute">
+            <ul class="minute">
+              <li v-for="(n, index) in 60" :key="n" @click="handleClick(index, 'minute')" :class="{ selected: minute === index }">
+                {{ index > 9 ? index : '0' + index }}
+              </li>
+            </ul>
+          </div>
+          <div class="item" ref="second">
+            <ul class="second">
+              <li v-for="(n, index) in 60" :key="n" @click="handleClick(index, 'second')" :class="{ selected: second === index }">
+                {{ index > 9 ? index : '0' + index }}
+              </li>
+            </ul>
+          </div>
         </div>
       </div>
     </c-spread>
@@ -59,7 +59,8 @@ export default {
           const hour = +RegExp.$1
           const minute = +RegExp.$2
           const second = +RegExp.$3
-          return hour >= 0 && hour <= 2 && minute >= 0 && minute <= 59 && second >= 0 && second <= 59
+          console.log('hour', hour, minute, second)
+          return hour >= 0 && hour <= 23 && minute >= 0 && minute <= 59 && second >= 0 && second <= 59
         }
         return false
       }
@@ -154,7 +155,7 @@ export default {
       e.target.blur()
     },
     listenDocument(e) {
-      if (!this.$refs.picker.contains(e.target)) {
+      if (!this.$refs.picker.contains(e.target) && !this.$refs.input.contains(e.target)) {
         // 点击别处关闭且无 value, 将数据初始化
         if (!this.value) {
           this.hour = -1
@@ -208,6 +209,9 @@ export default {
 
 <style lang="scss" scoped>
 $p: #409eff;
+* {
+  box-sizing: border-box;
+}
 .c-time-picker {
   width: 180px;
   position: relative;

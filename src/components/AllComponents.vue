@@ -258,6 +258,9 @@
     <div class="container-7">
       <c-date-picker v-model="date" :default-value="today"></c-date-picker>
     </div>
+    <div class="container-7">
+      <c-time-picker v-model="time" default-value="12:00:00"></c-time-picker>
+    </div>
   </div>
 </template>
 
@@ -283,6 +286,7 @@ import cTabs from '@/components/navigation/tabs/Tabs.vue'
 import cTabsTitle from '@/components/navigation/tabs/TabsTitle.vue'
 import cTabsPane from '@/components/navigation/tabs/TabsPane.vue'
 import cDatePicker from '@/components/form/datePicker/DatePicker.vue'
+import cTimePicker from '@/components/form/timePicker/TimePicker.vue'
 // import router from '@/router'
 
 export default {
@@ -308,7 +312,8 @@ export default {
     cTabs,
     cTabsTitle,
     cTabsPane,
-    cDatePicker
+    cDatePicker,
+    cTimePicker
   },
   data() {
     return {
@@ -324,7 +329,8 @@ export default {
       selectTab: 'shaolin',
       selected1: '2-1',
       date: '',
-      today: '2020-12-11'
+      today: '2020-12-11',
+      time: '12:22:33'
     }
   },
   methods: {
